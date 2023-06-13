@@ -22,7 +22,7 @@ async function readMessage() {
   let message = db.collection("message");
 
   let list = await message.find().toArray();
-  console.log(list);
+  return list;
 
   await client.close();
 }
@@ -34,7 +34,8 @@ async function main() {
     from: "cdac",
   };
   // await insertMessage(jsonDocument);
-  readMessage();
+  let list = await readMessage();
+  console.log(list);
 }
 
 main();
