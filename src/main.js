@@ -1,17 +1,19 @@
-import { insertMessage, readMessage } from "./mydb.js";
+import { MongoClient } from "mongodb";
 
 async function main() {
-  // insert
-  let jsonDocument = {
-    message: "Hello Universee",
-    to: "Dhanu",
-    from: "cdac",
-  };
-  await insertMessage(jsonDocument);
+  const uri = "mongodb://127.0.0.1:27017";
+  const client = new MongoClient(uri);
 
-  // read
-  let list = await readMessage();
-  console.log(list);
+  let db = client.db("mydb");
+
+  let messageCollection = db.collection("message");
+
+  let inputDocument = { message: "helloo" };
+  await messageCollection.insertOne(inputDocument);
+  console.log("success");
+
+  await client.close();
+
+
 }
-
 main();
