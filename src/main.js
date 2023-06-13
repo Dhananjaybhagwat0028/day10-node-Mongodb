@@ -1,19 +1,9 @@
-import { MongoClient } from "mongodb";
+// remotely executable
+// Network call
+// Network Address
+// Remote address
+// http://localhost:4000/
+import express from "express";
+const app = express();
 
-async function main() {
-  const uri = "mongodb://127.0.0.1:27017";
-  const client = new MongoClient(uri);
-
-  let db = client.db("mydb");
-
-  let messageCollection = db.collection("message");
-
-  let inputDocument = { message: "helloo" };
-  await messageCollection.insertOne(inputDocument);
-  console.log("success");
-
-  await client.close();
-
-
-}
-main();
+app.listen(4000);
