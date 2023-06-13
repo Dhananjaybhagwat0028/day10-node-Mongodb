@@ -1,4 +1,5 @@
-console.log("hello");
+import {} from "node:fs";
+console.log("hello"); 
 
 
 
