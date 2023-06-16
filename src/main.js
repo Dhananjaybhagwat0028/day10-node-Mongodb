@@ -3,14 +3,22 @@ import express from "express";
 const app = express();
 
 async function main(req, res) {
-  const uri = "mongodb://localhost:27017";
+  const uri = "mongodb://127.0.0.1:27017";
   const client = new MongoClient(uri);
 
   const db = client.db("mydb");
   const messageColl = db.collection("message");
 
-  let message = req.query.message ;
-  let inputDocument = { message: message };
+  let message = req.query.message || "DEFAULT";
+  let from = req.query.from || "-";
+  let to = req.query.to || "-";
+  let inputDocument = {
+    message: message,
+    from: from,
+    to: to,
+    ts: new Date(),
+    course: "CDAC",
+  };
   await messageColl.insertOne(inputDocument);
 
   await client.close();
@@ -19,7 +27,7 @@ async function main(req, res) {
 }
 
 async function findAllMessage(req, res) {
-  const uri = "mongodb://localhost:27017";
+  const uri = "mongodb://127.0.0.1:27017";
   const client = new MongoClient(uri);
 
   const db = client.db("mydb");
