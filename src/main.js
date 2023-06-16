@@ -10,12 +10,12 @@ async function main(req, res) {
   const messageColl = db.collection("message");
 
   let message = req.query.message;
-  let inputDocument = { message: message };
+  let inputDocument = { message: "hello im from express.js" };
   await messageColl.insertOne(inputDocument);
 
   await client.close();
 
-  res.send("record added");
+  res.send("record added in mongodb ");
 }
 
 async function findAllMessage(req, res) {
