@@ -34,5 +34,5 @@ async function findAllMessage(req, res) {
 app.get("/main", main);
 app.get("/find", findAllMessage);
 
-// http://loaclhost:4000
+// http://localhost:4000
 app.listen(4000);
