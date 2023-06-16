@@ -7,7 +7,7 @@ function main(req, res) {
 
 app.get("/main", main);
 
-app.get("/first", (req, res) => res.send("Hello World"));
+app.get("/first", (req, res) => res.send("Hello i am network call"));
 
 app.get("/second", (req, res) => {
   res.send("Hello SEcond!!");
